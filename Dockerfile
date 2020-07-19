@@ -20,4 +20,7 @@ COPY scripts/populate_parameters.py /usr/local/bin/populate_parameters.py
 
 USER jenkins
 
+RUN /usr/local/bin/install-plugins.sh configuration-as-code
+
+
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
