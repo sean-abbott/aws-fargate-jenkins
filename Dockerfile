@@ -17,10 +17,11 @@ RUN pip3 install \
 
 COPY scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
 COPY scripts/populate_parameters.py /usr/local/bin/populate_parameters.py
+COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
 
 USER jenkins
 
-RUN /usr/local/bin/install-plugins.sh configuration-as-code
+RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
 
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
